@@ -61,6 +61,7 @@ Make sure you have the following installed:
 
 3. **Set Up Environment Variables**:
    Create a `.env` file in the root directory and configure the following:
+   `.env` for node server
    ```env for node server
    PORT=8080
    GOOGLE_GEN_AI_KEY=your_gemini_ai_api_key
@@ -73,6 +74,7 @@ Make sure you have the following installed:
    FIRESTORE_MEASUREMENT_ID=your_firebase_measurement_id
    FIRESTORE_STORAGE_COLLECTION_NAME=your_collection_name
    ```
+   `.env` for font end (sem-app)
    ```env for font end (sem-app)
    VITE_FIRESTORE_API_KEY=your_firebase_api_key
    VITE_FIRESTORE_AUTH_DOMAIN=your_firebase_auth_domain
@@ -119,18 +121,6 @@ Make sure you have the following installed:
 - Uses Firebase Authentication for secure user login and registration.
 - Backend validation handled using Firebase Admin SDK.
 - Ensures safe handling of sensitive data.
-
----
-
-## 🤝 Contributing
-
-We welcome contributions to improve the Smart Expense Manager. Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch.
-3. Commit your changes.
-4. Push to your fork.
-5. Create a pull request.
 
 ---
 
