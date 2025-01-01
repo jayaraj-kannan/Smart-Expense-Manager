@@ -1,0 +1,3 @@
+node_modules/
+sem-app/
+*.env
