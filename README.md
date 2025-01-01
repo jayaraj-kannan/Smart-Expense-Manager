@@ -61,8 +61,9 @@ Make sure you have the following installed:
 
 3. **Set Up Environment Variables**:
    Create a `.env` file in the root directory and configure the following:
-   `.env` for node server
-   ```env for node server
+   - `.env` for node server
+
+   ```env
    PORT=8080
    GOOGLE_GEN_AI_KEY=your_gemini_ai_api_key
    FIRESTORE_API_KEY=your_firebase_api_key
@@ -74,7 +75,10 @@ Make sure you have the following installed:
    FIRESTORE_MEASUREMENT_ID=your_firebase_measurement_id
    FIRESTORE_STORAGE_COLLECTION_NAME=your_collection_name
    ```
-   `.env` for font end (sem-app)
+   - `.env` for font end (sem-app)
+      ```bash
+   cd sem-app
+   ```
    ```env for font end (sem-app)
    VITE_FIRESTORE_API_KEY=your_firebase_api_key
    VITE_FIRESTORE_AUTH_DOMAIN=your_firebase_auth_domain
@@ -87,9 +91,12 @@ Make sure you have the following installed:
    VITE_EMAILJS_TEMPLATE_ID=your_emaijs_template_id
    VITE_EMAILJS_PUBLIC_KEY=your_emaijs_public_key
    ```
+  ```bash
+   cd sem-app
+   ```
 
 3. **Set Up Environment Variables**:
-   download and place firebase service account .json file on root directory
+  - download and place firebase service account .json file on root directory
 
 4. **Start the Server**:
    ```bash
