@@ -95,7 +95,7 @@ Make sure you have the following installed:
    ```
 
    ```bash
-   cd sem-app
+   cd ..
    ```
 
 3. **Set Up Environment Variables**:
