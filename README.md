@@ -1,4 +1,4 @@
-# Smart Expense Manager
+# Smart Expense Manager - AI Chatbot
 
 Smart Expense Manager is a powerful and intuitive web application designed to help you manage your expenses effortlessly. Built with modern technologies like Vue 3 for the frontend and a Node.js server for the backend, it offers a seamless experience for tracking, analyzing, and managing your finances.
 
@@ -35,7 +35,8 @@ Smart Expense Manager is a powerful and intuitive web application designed to he
 - **Google Cloud Run**: Serverless deployment for scalable and efficient application hosting.
 
 ---
-
+### Live Demo 
+Checkout the live app her [Smart Expense Manager - AI Chatbot](https://sem-app-800933239910.us-central1.run.app)
 ## 🚀 Getting Started
 
 ### Prerequisites
