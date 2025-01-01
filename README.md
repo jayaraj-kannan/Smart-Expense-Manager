@@ -76,10 +76,12 @@ Make sure you have the following installed:
    FIRESTORE_STORAGE_COLLECTION_NAME=your_collection_name
    ```
    - `.env` for font end (sem-app)
-      ```bash
+
+   ```bash
    cd sem-app
    ```
-   ```env for font end (sem-app)
+
+   ```env
    VITE_FIRESTORE_API_KEY=your_firebase_api_key
    VITE_FIRESTORE_AUTH_DOMAIN=your_firebase_auth_domain
    VITE_FIRESTORE_PROJECT_ID=your_firebase_project_id
@@ -91,7 +93,8 @@ Make sure you have the following installed:
    VITE_EMAILJS_TEMPLATE_ID=your_emaijs_template_id
    VITE_EMAILJS_PUBLIC_KEY=your_emaijs_public_key
    ```
-  ```bash
+
+   ```bash
    cd sem-app
    ```
 
