@@ -47,65 +47,61 @@ Make sure you have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/smart-expense-manager.git
+   git clone https://github.com/jayaraj-kannan/Smart-Expense-Manager.git
    cd smart-expense-manager
    ```
 
 2. **Install Dependencies**:
    ```bash
    npm install
-   cd client
+   cd sem-app
    npm install
    cd ..
    ```
 
 3. **Set Up Environment Variables**:
    Create a `.env` file in the root directory and configure the following:
-   ```env
-   PORT=5000
-   FIREBASE_API_KEY=your_firebase_api_key
-   FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-   FIREBASE_PROJECT_ID=your_firebase_project_id
-   FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
-   FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
-   FIREBASE_APP_ID=your_firebase_app_id
-   FIREBASE_ADMIN_SDK_KEY=your_firebase_admin_sdk_key
+   ```env for node server
+   PORT=8080
+   GOOGLE_GEN_AI_KEY=your_gemini_ai_api_key
+   FIRESTORE_API_KEY=your_firebase_api_key
+   FIRESTORE_AUTH_DOMAIN=your_firebase_auth_domain
+   FIRESTORE_PROJECT_ID=your_firebase_project_id
+   FIRESTORE_STORAGE_BUCKET=your_firebase_storage_bucket
+   FIRESTORE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   FIRESTORE_APP_ID=your_firebase_app_id
+   FIRESTORE_MEASUREMENT_ID=your_firebase_measurement_id
+   FIRESTORE_STORAGE_COLLECTION_NAME=your_collection_name
    ```
+   ```env for font end (sem-app)
+   VITE_FIRESTORE_API_KEY=your_firebase_api_key
+   VITE_FIRESTORE_AUTH_DOMAIN=your_firebase_auth_domain
+   VITE_FIRESTORE_PROJECT_ID=your_firebase_project_id
+   VITE_FIRESTORE_STORAGE_BUCKET=your_firebase_storage_bucket
+   VITE_FIRESTORE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+   VITE_FIRESTORE_APP_ID=your_firebase_app_id
+   VITE_FIRESTORE_MEASUREMENT_ID=your_firebase_measurement_id
+   VITE_EMAILJS_SERVICE_ID=your_emaijs_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_emaijs_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_emaijs_public_key
+   ```
+
+3. **Set Up Environment Variables**:
+   download and place firebase service account .json file on root directory
 
 4. **Start the Server**:
    ```bash
-   npm run dev
+   npm run start
    ```
 
 5. **Start the Frontend**:
    ```bash
-   cd client
-   npm run serve
+   cd sem-app
+   npm run build
    ```
 
 6. **Access the Application**:
    Open your browser and navigate to `http://localhost:8080`.
-
----
-
-## 📂 Project Structure
-
-```
-smart-expense-manager/
-├── client/              # Frontend Vue 3 Application
-│   ├── src/
-│   │   ├── components/  # Reusable components
-│   │   ├── views/       # Pages and views
-│   │   ├── store/       # Vuex store for state management
-│   │   └── App.vue      # Root component
-│   └── ...
-├── server/              # Backend Node.js Application
-│   ├── models/          # Data models
-│   ├── routes/          # API Routes
-│   ├── controllers/     # Request Handlers
-│   └── app.js           # Entry point for the server
-└── README.md            # Documentation
-```
 
 ---
 
@@ -116,20 +112,6 @@ smart-expense-manager/
 
 ### Add Expense
 ![Add Expense](./screenshots/add-expense.png)
-
----
-
-## 📋 API Endpoints
-
-### Authentication
-- **POST** `/api/auth/register` - Register a new user.
-- **POST** `/api/auth/login` - Log in with email and password.
-
-### Expenses
-- **GET** `/api/expenses` - Retrieve all expenses.
-- **POST** `/api/expenses` - Add a new expense.
-- **PUT** `/api/expenses/:id` - Update an expense.
-- **DELETE** `/api/expenses/:id` - Delete an expense.
 
 ---
 
@@ -160,7 +142,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📞 Support
 
-If you encounter any issues, feel free to open an issue on [GitHub](https://github.com/your-username/smart-expense-manager/issues) or contact us at support@yourdomain.com.
+If you encounter any issues, feel free to open an issue on [GitHub](https://github.com/jayaraj-kannan/Smart-Expense-Manager.git) or contact us at jrajfx@gmail.com.
 
 ---
 
