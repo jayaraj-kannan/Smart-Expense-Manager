@@ -200,7 +200,6 @@ const isuserHasExpenses = async () => {
   try { 
     await axiosInstance.get(`/api/get-expense-count`)
     .then(result =>{
-      console.log("count :",result);
     if( !(result.data.count > 0 )){
       startDialog.value = true;
     }
@@ -454,7 +453,6 @@ onMounted(async () => {
   }
   try {
     const result = await axiosInstance.get(`/api/get-prompt-suggest`)
-    console.log("suggest :", result);
     if (result.data.length > 0) {
       suggest.value = result.data;
     }

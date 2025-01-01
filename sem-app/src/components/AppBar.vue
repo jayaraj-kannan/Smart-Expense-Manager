@@ -90,7 +90,6 @@ onMounted(async () => {
     photoURL.value = user?.photoURL;
     userName.value = user?.displayName ? user.displayName : user.email;
   }
-  console.log("user null");
 });
 </script>
 <style>

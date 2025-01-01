@@ -56,9 +56,10 @@ console.log("firebase collect name :", FIRESTORE_STORAGE_COLLECTION_NAME);
 console.log("print all ENV variables #END");
 // execution promts
 // const Q1 = `can you say what is the prompt , response should be any one option ['expense','query','NA'] .conditions : it should be any expense input then return 'expense' or any expense report related question return 'query' else then return 'NA'`;
-const Q1 =`give me the option of above prompt, response should be any one option [expense,query,NA] as string, 
-expense : if the prompt is related to any expense entry or expenses details or expense data.
-query : if the prompt is related to any expense query or question or report or status or contains ?. NA: if the prompt is either 'expense' or 'query'`
+const Q1 =`give me the single word response about above prompt, response should be any one option [expense,query,NA] as string, 
+expense : if the prompt is related to any expense entry or expenses details or expense data or any debit sms.
+query : if the prompt is related to any expenses query or expenses question or expenses report or expenses status. 
+NA: if the prompt is either 'expense' or 'query'`
 const Q2 = `extract data as json, key value should be,
 expense :{ 
   title: { value :'give some relevant title', emoji :'relevant emoji'} // Grocery shopping
@@ -160,17 +161,18 @@ app.get('/api/send-prompt',authenticate, async (req, res) => {
         const currentDate = formatDateToDDMMYYYY(new Date());
         try {
             const result = await chatWithGemini(`${prompt} \n ${Q1}`);
-            console.log(result);
-            if (result.trim().toLowerCase().replaceAll("/\"","").replaceAll("'","") === 'expense') {
+            const promptTone = result.trim().toLowerCase().replaceAll('"', '').replaceAll("'", "");
+            console.log(promptTone);
+            if (promptTone === 'expense') {
                 const q2Prompt = Q2.replace('[CURRENT_DATE]', currentDate);
                 const dataSet = await chatWithGemini(`${prompt} \n ${q2Prompt}`)
                 console.log("dataset :",dataSet);
                 const responseData = JSON.parse(dataSet.replaceAll("`", "").replaceAll("json", "").replaceAll("\n", ""));
                 await addExpenseData(responseData?.expense,username);
                 res.send(responseData);
-            } else if (result.trim().toLowerCase().replaceAll("/\"","").replaceAll("'","") === 'query') {
+            } else if (promptTone === 'query') {
                 const q3Prompt = Q3.replace('[CURRENT_DATE]', currentDate);
-                const allExpense = await getAllExpenses();
+                const allExpense = await getAllExpenses(username);
                 console.log()
                 const queryResponse = await chatWithGemini(`${JSON.stringify(allExpense)} \n\n ${prompt} \n\n ${q3Prompt}`);
                 console.log("queryResponse :",queryResponse);

@@ -88,14 +88,20 @@ const barChartAmount = ref<number[]>([]);
 const currentUser = ref();
 const getAllExpenses = async () => {
   barChartDay.value = getLastWeekLabels();
-  const response = await axiosInstance.get(`/api/get-expense`);
-  const expenses: Expense[] = response.data;
-  barChartAmount.value = filterLastWeekSum(expenses);
-  pieChartData.value = expenses.map((item) => ({
+  await axiosInstance.get(`/api/get-expense`)
+  .then(result =>{
+    const expenses: Expense[] = result.data;
+    barChartAmount.value = filterLastWeekSum(expenses);
+    pieChartData.value = expenses.map((item) => ({
     value: item.amount && item.amount.value ? parseFloat(item.amount.value) : 0,
     name: item.category && item.category.value ? item.category.value : 'Unknown',
   }));
   loadingChart.value = false;
+  }).catch(error =>{
+    console.log("getAllExpenses error :",error);
+    loadingChart.value = false;
+  })
+ 
 }
 const getLastWeekLabels = () => {
   const days = [];
@@ -117,7 +123,6 @@ const filterLastWeekSum = (expenses: Expense[]) => {
       if (expense.date && expense.amount !== undefined) {
         const itemDate = parseDate(expense.date.value);
         if (!itemDate) return;
-
         const expenseDay = itemDate.toLocaleDateString('en-US', { weekday: 'short' });
         if (expenseDay === day) {
           const amount = parseInt(expense.amount.value, 10);
@@ -136,7 +141,7 @@ const filterLastWeekSum = (expenses: Expense[]) => {
 
 const parseDate = (date: string) => {
   if (/\d{2}-[A-Za-z]{3}-\d{2}/.test(date)) {
-    return new Date(date.replace(/-/g, " ")); // Replace dashes with spaces for parsing
+    return new Date(date.replace(/-/g, " "));
   }
 
   // Handle "13/03/24 15:21" format
@@ -147,8 +152,15 @@ const parseDate = (date: string) => {
     return new Date(`20${year}-${month}-${day}T${hours}:${minutes}:00`); // Convert to ISO format
   }
 
+  // Handle "12/12/2024" format
+  if (/\d{2}\/\d{2}\/\d{4}/.test(date)) {
+    const [day, month, year] = date.split("/");
+    return new Date(`${year}-${month}-${day}T00:00:00`); // Convert to ISO format with default time
+  }
+
   return null;
 };
+
 onMounted(async () => {
 
   currentUser.value = await getCurrentUser();
